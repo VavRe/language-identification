@@ -1,0 +1,31 @@
+{
+    "total_samples": 21999,
+    "language_distribution": {
+        "Estonian": 1000,
+        "Swedish": 1000,
+        "English": 1000,
+        "Russian": 1000,
+        "Romanian": 1000,
+        "Persian": 1000,
+        "Pushto": 1000,
+        "Spanish": 1000,
+        "Hindi": 1000,
+        "Korean": 1000,
+        "Chinese": 1000,
+        "French": 1000,
+        "Portugese": 1000,
+        "Indonesian": 1000,
+        "Urdu": 1000,
+        "Latin": 1000,
+        "Turkish": 1000,
+        "Japanese": 1000,
+        "Tamil": 1000,
+        "Thai": 1000,
+        "Arabic": 1000,
+        "Dutch": 999
+    },
+    "avg_text_length": 355.93926996681665,
+    "min_text_length": 8,
+    "max_text_length": 1341,
+    "unique_languages": 22
+}

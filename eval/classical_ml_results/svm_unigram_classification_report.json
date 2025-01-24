@@ -1,0 +1,147 @@
+{
+    "Arabic": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 200.0
+    },
+    "Chinese": {
+        "precision": 0.9949748743718593,
+        "recall": 0.99,
+        "f1-score": 0.9924812030075187,
+        "support": 200.0
+    },
+    "Dutch": {
+        "precision": 0.9463414634146341,
+        "recall": 0.97,
+        "f1-score": 0.9580246913580247,
+        "support": 200.0
+    },
+    "English": {
+        "precision": 0.8237885462555066,
+        "recall": 0.935,
+        "f1-score": 0.8758782201405152,
+        "support": 200.0
+    },
+    "Estonian": {
+        "precision": 0.9795918367346939,
+        "recall": 0.96,
+        "f1-score": 0.9696969696969697,
+        "support": 200.0
+    },
+    "French": {
+        "precision": 0.9507389162561576,
+        "recall": 0.965,
+        "f1-score": 0.9578163771712159,
+        "support": 200.0
+    },
+    "Hindi": {
+        "precision": 1.0,
+        "recall": 0.985,
+        "f1-score": 0.9924433249370277,
+        "support": 200.0
+    },
+    "Indonesian": {
+        "precision": 0.9844559585492227,
+        "recall": 0.95,
+        "f1-score": 0.9669211195928753,
+        "support": 200.0
+    },
+    "Japanese": {
+        "precision": 0.995,
+        "recall": 0.995,
+        "f1-score": 0.995,
+        "support": 200.0
+    },
+    "Korean": {
+        "precision": 1.0,
+        "recall": 0.99,
+        "f1-score": 0.9949748743718593,
+        "support": 200.0
+    },
+    "Latin": {
+        "precision": 0.9064039408866995,
+        "recall": 0.92,
+        "f1-score": 0.913151364764268,
+        "support": 200.0
+    },
+    "Persian": {
+        "precision": 0.9949748743718593,
+        "recall": 0.99,
+        "f1-score": 0.9924812030075187,
+        "support": 200.0
+    },
+    "Portugese": {
+        "precision": 0.9435897435897436,
+        "recall": 0.92,
+        "f1-score": 0.9316455696202531,
+        "support": 200.0
+    },
+    "Pushto": {
+        "precision": 1.0,
+        "recall": 0.955,
+        "f1-score": 0.9769820971867008,
+        "support": 200.0
+    },
+    "Romanian": {
+        "precision": 1.0,
+        "recall": 0.98,
+        "f1-score": 0.98989898989899,
+        "support": 200.0
+    },
+    "Russian": {
+        "precision": 0.9949748743718593,
+        "recall": 0.99,
+        "f1-score": 0.9924812030075187,
+        "support": 200.0
+    },
+    "Spanish": {
+        "precision": 0.9423076923076923,
+        "recall": 0.98,
+        "f1-score": 0.9607843137254902,
+        "support": 200.0
+    },
+    "Swedish": {
+        "precision": 0.995,
+        "recall": 0.995,
+        "f1-score": 0.995,
+        "support": 200.0
+    },
+    "Tamil": {
+        "precision": 1.0,
+        "recall": 0.99,
+        "f1-score": 0.9949748743718593,
+        "support": 200.0
+    },
+    "Thai": {
+        "precision": 1.0,
+        "recall": 0.995,
+        "f1-score": 0.9974937343358395,
+        "support": 200.0
+    },
+    "Turkish": {
+        "precision": 1.0,
+        "recall": 0.985,
+        "f1-score": 0.9924433249370277,
+        "support": 200.0
+    },
+    "Urdu": {
+        "precision": 1.0,
+        "recall": 0.985,
+        "f1-score": 0.9924433249370277,
+        "support": 200.0
+    },
+    "accuracy": 0.9738636363636364,
+    "macro avg": {
+        "precision": 0.9750973964140877,
+        "recall": 0.9738636363636364,
+        "f1-score": 0.9742280354576592,
+        "support": 4400.0
+    },
+    "weighted avg": {
+        "precision": 0.9750973964140878,
+        "recall": 0.9738636363636364,
+        "f1-score": 0.9742280354576591,
+        "support": 4400.0
+    }
+}
