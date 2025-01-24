@@ -15,14 +15,35 @@ class DataLoader:
     @staticmethod
     def download_dataset() -> str:
         """
-        Download dataset from Kaggle
+        Check for dataset in ../dataset/dataset.csv, if not exists, download from Kaggle
         Returns:
-            str: Path to the downloaded dataset
+            str: Path to the dataset
         """
+        # Check local path first
+        local_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
+                                 "dataset", "dataset.csv")
+        
+        # If local file exists, return its path
+        if os.path.exists(local_path):
+            print(f"Dataset found locally at: {local_path}")
+            return local_path
+            
+        # If not, create directory and download
         try:
-            path = kagglehub.dataset_download("zarajamshaid/language-identification-datasst")
-            print(f"Dataset downloaded successfully to: {path}")
-            return path + "/dataset.csv"
+            # Create dataset directory if it doesn't exist
+            os.makedirs(os.path.dirname(local_path), exist_ok=True)
+            
+            # Download from Kaggle
+            print("Downloading dataset from Kaggle...")
+            kaggle_path = kagglehub.dataset_download("zarajamshaid/language-identification-datasst")
+            
+            # Copy file to local directory
+            import shutil
+            shutil.copy2(kaggle_path + "/dataset.csv", local_path)
+            
+            print(f"Dataset downloaded and saved to: {local_path}")
+            return local_path
+            
         except Exception as e:
             print(f"Error downloading dataset: {e}")
             return None
@@ -32,12 +53,14 @@ class DataLoader:
         """
         Load dataset from CSV file
         Args:
-            csv_path (str, optional): Path to CSV file. Defaults to "dataset.csv".
+            csv_path (str, optional): Path to CSV file. 
+                If None, looks in ../dataset/dataset.csv
         Returns:
             Tuple[np.ndarray, np.ndarray]: Texts and labels
         """
         if csv_path is None:
-            csv_path = "dataset.csv"
+            csv_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
+                                  "dataset", "dataset.csv")
         
         try:
             df = pd.read_csv(csv_path)
