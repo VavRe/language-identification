@@ -14,7 +14,7 @@
             "model_path": "eval/classical_ml_results/models/nb_bigram.joblib"
         },
         "validation_metrics": {
-            "validation_accuracy": 0.9775
+            "validation_accuracy": 0.9772727272727273
         }
     },
     "nb_tfidf": {
@@ -32,7 +32,7 @@
             "model_path": "eval/classical_ml_results/models/svm_unigram.joblib"
         },
         "validation_metrics": {
-            "validation_accuracy": 0.9738636363636364
+            "validation_accuracy": 0.9736363636363636
         }
     },
     "svm_tfidf": {
@@ -50,7 +50,7 @@
             "model_path": "eval/classical_ml_results/models/rf_tfidf.joblib"
         },
         "validation_metrics": {
-            "validation_accuracy": 0.9829545454545454
+            "validation_accuracy": 0.9836363636363636
         }
     },
     "lr_tfidf": {
@@ -59,7 +59,7 @@
             "model_path": "eval/classical_ml_results/models/lr_tfidf.joblib"
         },
         "validation_metrics": {
-            "validation_accuracy": 0.9829545454545454
+            "validation_accuracy": 0.9831818181818182
         }
     }
 }

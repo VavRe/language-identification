@@ -30,6 +30,8 @@ def test_transformer():
     # Initialize tokenizer
     print("Initializing tokenizer...")
     model_name = "xlm-roberta-base"
+    model_name = '/home/v_rahimzadeh/hf_models/models--xlm-roberta-base/snapshots/e73636d4f797dec63c3081bb6ed5c7b0bb3f2089'
+
     tokenizer = XLMRobertaTokenizer.from_pretrained(model_name)
     
     # Create datasets

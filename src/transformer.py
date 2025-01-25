@@ -130,7 +130,7 @@ class TransformerTrainer:
         self.tensorboard_dir = os.path.join(model_dir, 'runs', current_time)
         os.makedirs(self.tensorboard_dir, exist_ok=True)
         
-        self.device = torch.device('mps' if torch.cuda.is_available() else 'cpu')
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.writer = None
 
     def train(self,

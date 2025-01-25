@@ -5,7 +5,7 @@ pandas
 numpy
 matplotlib
 seaborn
-googletrans==3.1.0a0
+#googletrans==3.1.0a0
 requests
 kagglehub
 tensorboard
