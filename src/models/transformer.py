@@ -122,7 +122,7 @@ class TransformerDataset(Dataset):
         }
 
 class TransformerTrainer:
-    def __init__(self, model_dir: str = "eval/transformer_results/models"):
+    def __init__(self, model_dir: str = "results/models/transformer"):
         self.model_dir = model_dir
         os.makedirs(model_dir, exist_ok=True)
         

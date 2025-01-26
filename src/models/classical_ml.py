@@ -1,4 +1,10 @@
-# src/classical_ml.py
+import sys
+import os
+
+# Add the project root directory to the Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+
 import numpy as np
 from typing import Dict, List, Any, Tuple
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
@@ -11,9 +17,10 @@ from sklearn.metrics import accuracy_score
 from tqdm import tqdm
 import joblib
 import os
+from src.utils import get_path
 
 class ClassicalMLModels:
-    def __init__(self, models_dir: str = "eval/classical_ml_results/models"):
+    def __init__(self, models_dir: str = get_path("results","models","classical_ml")):
         """
         Initialize ClassicalMLModels
         Args:

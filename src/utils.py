@@ -1,5 +1,5 @@
-# src/utils.py
-import os
+
+import os, torch
 import pandas as pd
 import kagglehub
 from sklearn.model_selection import train_test_split
@@ -10,6 +10,27 @@ import seaborn as sns
 from typing import Tuple, Optional, List, Dict, Any
 import numpy as np
 from tqdm import tqdm
+from torch.serialization import add_safe_globals
+from sklearn.preprocessing._label import LabelEncoder
+from torch.utils.data import Dataset, DataLoader
+
+
+add_safe_globals([LabelEncoder])
+
+
+import os
+
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+def get_path(*path_segments):
+    """
+    Construct an absolute path relative to the project root.
+    Args:
+        *path_segments: Path segments to join (e.g., "results", "models").
+    Returns:
+        str: Absolute path.
+    """
+    return os.path.join(PROJECT_ROOT, *path_segments)
 
 class DataLoader:
     @staticmethod
@@ -101,8 +122,10 @@ class DataLoader:
                               random_state=random_state, 
                               stratify=labels)
 
+
+
 class ResultsHandler:
-    def __init__(self, base_path: str = "eval"):
+    def __init__(self, base_path: str = os.path.join(PROJECT_ROOT, "results/evaluations")):
         """
         Initialize ResultsHandler
         Args:
@@ -114,9 +137,11 @@ class ResultsHandler:
     def _create_directories(self):
         """Create necessary directories for storing results"""
         directories = [
-            "classical_ml_results",
-            "deep_learning_results",
-            "zero_shot_results"
+            "classical_ml",
+            "lstm",
+            "mlp",
+            "transformer",
+            "zero_shot",
         ]
         for dir_name in directories:
             os.makedirs(os.path.join(self.base_path, dir_name), exist_ok=True)
@@ -129,7 +154,7 @@ class ResultsHandler:
             model_name (str): Name of the model
             category (str): Category of results
         """
-        path = os.path.join(self.base_path, f"{category}_results", f"{model_name}_results.json")
+        path = os.path.join(self.base_path, f"{category}", f"{model_name}.json")
         with open(path, 'w') as f:
             json.dump(results, f, indent=4)
         print(f"Results saved to {path}")
@@ -158,7 +183,7 @@ class ResultsHandler:
         plt.xticks(rotation=45)
         plt.tight_layout()
         
-        path = os.path.join(self.base_path, f"{category}_results", 
+        path = os.path.join(self.base_path, category, 
                            f"{model_name}_confusion_matrix.png")
         plt.savefig(path, bbox_inches='tight')
         plt.close()
@@ -183,7 +208,7 @@ class ResultsHandler:
         """
         report = classification_report(y_true, y_pred, target_names=labels, output_dict=True)
         
-        path = os.path.join(self.base_path, f"{category}_results", 
+        path = os.path.join(self.base_path, category, 
                            f"{model_name}_classification_report.json")
         with open(path, 'w') as f:
             json.dump(report, f, indent=4)
@@ -230,3 +255,90 @@ class ResultsHandler:
         plt.close()
         
         print(f"Dataset statistics saved to {self.base_path}")
+
+# Add this new class for early stopping
+class EarlyStopping:
+    def __init__(self, patience=10, min_delta=0, mode='min'):
+        """
+        Early stopping handler
+        Args:
+            patience (int): Number of epochs to wait before stopping
+            min_delta (float): Minimum change in monitored value to qualify as an improvement
+            mode (str): 'min' for loss, 'max' for metrics like accuracy
+        """
+        self.patience = patience
+        self.min_delta = min_delta
+        self.mode = mode
+        self.counter = 0
+        self.best_value = float('inf') if mode == 'min' else float('-inf')
+        self.early_stop = False
+        self.min_delta *= 1 if mode == 'min' else -1
+
+    def __call__(self, current_value):
+        if self.mode == 'min':
+            improved = current_value < self.best_value - self.min_delta
+        else:
+            improved = current_value > self.best_value + self.min_delta
+
+        if improved:
+            self.best_value = current_value
+            self.counter = 0
+        else:
+            self.counter += 1
+            if self.counter >= self.patience:
+                self.early_stop = True
+
+        return self.early_stop
+
+
+class LanguageDataset(Dataset):
+    def __init__(
+        self, 
+        texts: List[str], 
+        labels: List[str], 
+        max_length: int = 100, 
+        vocab: Optional[Dict[str, int]] = None,
+        label_encoder: Optional[LabelEncoder] = None  # Add this parameter
+    ):
+        self.texts = texts
+        self.max_length = max_length
+        
+        # Use existing vocabulary or create new
+        if vocab is None:
+            self.vocab = self._create_vocabulary(texts)
+        else:
+            self.vocab = vocab
+        
+        # Use existing label encoder or create new
+        if label_encoder is None:
+            self.label_encoder = LabelEncoder()
+            self.labels = self.label_encoder.fit_transform(labels)
+        else:
+            self.label_encoder = label_encoder
+            self.labels = self.label_encoder.transform(labels)  # Transform, not fit_transform
+        
+        # Convert texts to sequences
+        self.sequences = [self._text_to_sequence(text) for text in texts]
+        
+        
+    def _create_vocabulary(self, texts: List[str]) -> Dict[str, int]:
+        """Create character-level vocabulary"""
+        chars = set(''.join(texts))
+        return {char: idx + 1 for idx, char in enumerate(chars)}  # 0 is reserved for padding
+
+    def _text_to_sequence(self, text: str) -> List[int]:
+        """Convert text to sequence of indices"""
+        sequence = [self.vocab.get(char, 0) for char in text[:self.max_length]]
+        padding = [0] * (self.max_length - len(sequence))
+        return sequence + padding
+
+    def __len__(self) -> int:
+        return len(self.texts)
+
+    def __getitem__(self, idx: int) -> Dict[str, torch.Tensor]:
+        return {
+            'input': torch.tensor(self.sequences[idx], dtype=torch.long),
+            'label': torch.tensor(self.labels[idx], dtype=torch.long)
+        }
+
+
