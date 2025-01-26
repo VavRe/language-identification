@@ -6,13 +6,14 @@ import yaml  # Import the yaml library
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 from src.utils import DataLoader, ResultsHandler, LanguageDataset
-from src.models.mlp import MLPTrainer, load_mlp_model
+from src.models.mlp import MLPTrainer, MLPClassifier
 from torch.utils.data import DataLoader as TorchDataLoader
 import torch
 from sklearn.metrics import classification_report
 import numpy as np
 import time
 from typing import Dict, Any
+
 
 def load_configs() -> Dict[str, Any]:
     """
@@ -25,8 +26,9 @@ def load_configs() -> Dict[str, Any]:
         configs = yaml.safe_load(file)
     return configs.get("mlp", {})  # Extract the 'mlp' section
 
+
 def run_mlp():
-    print("Starting MLP model testing...")
+    print("Starting MLP model training...")
     start_time = time.time()
 
     # Load configurations
@@ -74,7 +76,7 @@ def run_mlp():
 
     # MLP Configuration and Training
     print("\nTraining MLP model...")
-    mlp_results = mlp_trainer.train(
+    mlp_results = mlp_trainer.train_mlp(
         train_loader=train_loader,
         val_loader=test_loader,
         vocab_size=len(train_dataset.vocab) + 1,
@@ -86,31 +88,28 @@ def run_mlp():
     best_mlp_path = mlp_results['model_path']
     if os.path.exists(best_mlp_path):
         print("\nEvaluating best MLP model...")
-        try:
-            best_mlp = load_mlp_model(mlp_trainer, best_mlp_path, mlp_config)
-            
-            # Save model with vocabulary and label encoder
-            mlp_trainer.save_model(
-                best_mlp,
-                best_mlp_path,
-                vocab=train_dataset.vocab,
-                label_encoder=train_dataset.label_encoder
-            )
-            
-            mlp_predictions = mlp_trainer.predict(best_mlp, test_loader)
-            mlp_predictions_labels = [train_dataset.label_encoder.classes_[i] for i in mlp_predictions]
-            
-            # Generate classification report
-            mlp_report = classification_report(
-                y_test,
-                mlp_predictions_labels,
-                target_names=train_dataset.label_encoder.classes_,
-                output_dict=True
-            )
-            mlp_results['classification_report'] = mlp_report
-        except Exception as e:
-            print(f"Error in MLP evaluation: {str(e)}")
-            mlp_results['error'] = str(e)
+        best_mlp = mlp_trainer.load_model('mlp', best_mlp_path, mlp_config)
+        
+        # Save model with vocabulary and label encoder
+        mlp_trainer.save_model(
+            best_mlp,
+            best_mlp_path,
+            vocab=train_dataset.vocab,
+            label_encoder=train_dataset.label_encoder
+        )
+        
+        # Make predictions
+        mlp_predictions = mlp_trainer.predict(best_mlp, test_loader)
+        mlp_predictions_labels = [train_dataset.label_encoder.classes_[i] for i in mlp_predictions]
+        
+        # Generate classification report
+        mlp_report = classification_report(
+            y_test,
+            mlp_predictions_labels,
+            target_names=train_dataset.label_encoder.classes_,
+            output_dict=True
+        )
+        mlp_results['classification_report'] = mlp_report
 
     # Save final results
     try:
@@ -143,6 +142,7 @@ def run_mlp():
     
     return True
 
+
 if __name__ == "__main__":
     success = run_mlp()
-    print("\nTest completed successfully!" if success else "\nTest failed!")
+    print("\nTraining completed successfully!" if success else "\nTraining failed!")
