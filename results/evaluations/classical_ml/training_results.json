@@ -1,0 +1,65 @@
+{
+    "nb_unigram": {
+        "training_results": {
+            "status": "success",
+            "model_path": "/home/v_rahimzadeh/language-identification/results/models/classical_ml/nb_unigram.joblib"
+        },
+        "validation_metrics": {
+            "validation_accuracy": 0.9681818181818181
+        }
+    },
+    "nb_bigram": {
+        "training_results": {
+            "status": "success",
+            "model_path": "/home/v_rahimzadeh/language-identification/results/models/classical_ml/nb_bigram.joblib"
+        },
+        "validation_metrics": {
+            "validation_accuracy": 0.9772727272727273
+        }
+    },
+    "nb_tfidf": {
+        "training_results": {
+            "status": "success",
+            "model_path": "/home/v_rahimzadeh/language-identification/results/models/classical_ml/nb_tfidf.joblib"
+        },
+        "validation_metrics": {
+            "validation_accuracy": 0.9793181818181819
+        }
+    },
+    "svm_unigram": {
+        "training_results": {
+            "status": "success",
+            "model_path": "/home/v_rahimzadeh/language-identification/results/models/classical_ml/svm_unigram.joblib"
+        },
+        "validation_metrics": {
+            "validation_accuracy": 0.9736363636363636
+        }
+    },
+    "svm_tfidf": {
+        "training_results": {
+            "status": "success",
+            "model_path": "/home/v_rahimzadeh/language-identification/results/models/classical_ml/svm_tfidf.joblib"
+        },
+        "validation_metrics": {
+            "validation_accuracy": 0.9870454545454546
+        }
+    },
+    "rf_tfidf": {
+        "training_results": {
+            "status": "success",
+            "model_path": "/home/v_rahimzadeh/language-identification/results/models/classical_ml/rf_tfidf.joblib"
+        },
+        "validation_metrics": {
+            "validation_accuracy": 0.9836363636363636
+        }
+    },
+    "lr_tfidf": {
+        "training_results": {
+            "status": "success",
+            "model_path": "/home/v_rahimzadeh/language-identification/results/models/classical_ml/lr_tfidf.joblib"
+        },
+        "validation_metrics": {
+            "validation_accuracy": 0.9831818181818182
+        }
+    }
+}

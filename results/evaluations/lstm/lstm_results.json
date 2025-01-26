@@ -1,0 +1,183 @@
+{
+    "lstm": {
+        "train_losses": [
+            0.9467510468309576
+        ],
+        "val_losses": [
+            0.4076767639405485
+        ],
+        "final_train_loss": 0.9467510468309576,
+        "best_val_loss": 0.4076767639405485,
+        "model_path": "/home/v_rahimzadeh/language-identification/results/models/lstm/lstm_language_detector_best.pt",
+        "early_stopped": false,
+        "epochs_trained": 1,
+        "classification_report": {
+            "Arabic": {
+                "precision": 0.985,
+                "recall": 0.985,
+                "f1-score": 0.985,
+                "support": 200.0
+            },
+            "Chinese": {
+                "precision": 0.9425837320574163,
+                "recall": 0.985,
+                "f1-score": 0.9633251833740831,
+                "support": 200.0
+            },
+            "Dutch": {
+                "precision": 0.8238993710691824,
+                "recall": 0.655,
+                "f1-score": 0.7298050139275766,
+                "support": 200.0
+            },
+            "English": {
+                "precision": 0.575,
+                "recall": 0.92,
+                "f1-score": 0.7076923076923077,
+                "support": 200.0
+            },
+            "Estonian": {
+                "precision": 0.7652173913043478,
+                "recall": 0.88,
+                "f1-score": 0.8186046511627907,
+                "support": 200.0
+            },
+            "French": {
+                "precision": 0.8673469387755102,
+                "recall": 0.85,
+                "f1-score": 0.8585858585858586,
+                "support": 200.0
+            },
+            "Hindi": {
+                "precision": 0.98989898989899,
+                "recall": 0.98,
+                "f1-score": 0.9849246231155779,
+                "support": 200.0
+            },
+            "Indonesian": {
+                "precision": 1.0,
+                "recall": 0.56,
+                "f1-score": 0.717948717948718,
+                "support": 200.0
+            },
+            "Japanese": {
+                "precision": 0.985,
+                "recall": 0.985,
+                "f1-score": 0.985,
+                "support": 200.0
+            },
+            "Korean": {
+                "precision": 1.0,
+                "recall": 0.935,
+                "f1-score": 0.9664082687338501,
+                "support": 200.0
+            },
+            "Latin": {
+                "precision": 0.6423076923076924,
+                "recall": 0.835,
+                "f1-score": 0.7260869565217392,
+                "support": 200.0
+            },
+            "Persian": {
+                "precision": 0.9701492537313433,
+                "recall": 0.975,
+                "f1-score": 0.972568578553616,
+                "support": 200.0
+            },
+            "Portugese": {
+                "precision": 0.7921348314606742,
+                "recall": 0.705,
+                "f1-score": 0.746031746031746,
+                "support": 200.0
+            },
+            "Pushto": {
+                "precision": 0.9945945945945946,
+                "recall": 0.92,
+                "f1-score": 0.9558441558441558,
+                "support": 200.0
+            },
+            "Romanian": {
+                "precision": 0.983739837398374,
+                "recall": 0.605,
+                "f1-score": 0.7492260061919505,
+                "support": 200.0
+            },
+            "Russian": {
+                "precision": 0.99,
+                "recall": 0.99,
+                "f1-score": 0.99,
+                "support": 200.0
+            },
+            "Spanish": {
+                "precision": 0.695852534562212,
+                "recall": 0.755,
+                "f1-score": 0.7242206235011991,
+                "support": 200.0
+            },
+            "Swedish": {
+                "precision": 0.9346733668341709,
+                "recall": 0.93,
+                "f1-score": 0.9323308270676691,
+                "support": 200.0
+            },
+            "Tamil": {
+                "precision": 1.0,
+                "recall": 0.99,
+                "f1-score": 0.9949748743718593,
+                "support": 200.0
+            },
+            "Thai": {
+                "precision": 0.995,
+                "recall": 0.995,
+                "f1-score": 0.995,
+                "support": 200.0
+            },
+            "Turkish": {
+                "precision": 0.8391304347826087,
+                "recall": 0.965,
+                "f1-score": 0.8976744186046511,
+                "support": 200.0
+            },
+            "Urdu": {
+                "precision": 0.9848484848484849,
+                "recall": 0.975,
+                "f1-score": 0.9798994974874372,
+                "support": 200.0
+            },
+            "accuracy": 0.8806818181818182,
+            "macro avg": {
+                "precision": 0.8980171569829818,
+                "recall": 0.8806818181818183,
+                "f1-score": 0.8809614685780359,
+                "support": 4400.0
+            },
+            "weighted avg": {
+                "precision": 0.8980171569829818,
+                "recall": 0.8806818181818182,
+                "f1-score": 0.8809614685780359,
+                "support": 4400.0
+            }
+        },
+        "config": {
+            "embedding_dim": 300,
+            "hidden_dim": 256,
+            "n_layers": 2,
+            "bidirectional": true,
+            "dropout": 0.3,
+            "lr": 0.001,
+            "n_epochs": 1,
+            "patience": 10,
+            "min_delta": 0.0001,
+            "batch_size": 64,
+            "model_name": "lstm_language_detector"
+        },
+        "execution_time": 9.835421323776245,
+        "num_parameters": 4774930
+    },
+    "dataset_info": {
+        "train_samples": 17599,
+        "test_samples": 4400,
+        "num_classes": 22,
+        "vocab_size": 6813
+    }
+}

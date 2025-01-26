@@ -1,0 +1,175 @@
+{
+    "training_results": {
+        "train_losses": [
+            2.5936249131741733
+        ],
+        "val_losses": [
+            1.6345754168250344
+        ],
+        "final_train_loss": 2.5936249131741733,
+        "best_val_loss": 1.6345754168250344,
+        "model_path": "/home/v_rahimzadeh/language-identification/results/models/transformer/transformer_best.pt",
+        "early_stopped": false,
+        "epochs_trained": 1
+    },
+    "classification_report": {
+        "Arabic": {
+            "precision": 0.9090909090909091,
+            "recall": 1.0,
+            "f1-score": 0.9523809523809523,
+            "support": 200.0
+        },
+        "Chinese": {
+            "precision": 0.99,
+            "recall": 0.99,
+            "f1-score": 0.99,
+            "support": 200.0
+        },
+        "Dutch": {
+            "precision": 0.9705882352941176,
+            "recall": 0.99,
+            "f1-score": 0.9801980198019802,
+            "support": 200.0
+        },
+        "English": {
+            "precision": 0.788,
+            "recall": 0.985,
+            "f1-score": 0.8755555555555555,
+            "support": 200.0
+        },
+        "Estonian": {
+            "precision": 1.0,
+            "recall": 0.97,
+            "f1-score": 0.9847715736040609,
+            "support": 200.0
+        },
+        "French": {
+            "precision": 0.9660194174757282,
+            "recall": 0.995,
+            "f1-score": 0.9802955665024631,
+            "support": 200.0
+        },
+        "Hindi": {
+            "precision": 1.0,
+            "recall": 0.975,
+            "f1-score": 0.9873417721518988,
+            "support": 200.0
+        },
+        "Indonesian": {
+            "precision": 0.989010989010989,
+            "recall": 0.9,
+            "f1-score": 0.9424083769633508,
+            "support": 200.0
+        },
+        "Japanese": {
+            "precision": 1.0,
+            "recall": 0.99,
+            "f1-score": 0.9949748743718593,
+            "support": 200.0
+        },
+        "Korean": {
+            "precision": 1.0,
+            "recall": 0.99,
+            "f1-score": 0.9949748743718593,
+            "support": 200.0
+        },
+        "Latin": {
+            "precision": 0.9587628865979382,
+            "recall": 0.93,
+            "f1-score": 0.9441624365482234,
+            "support": 200.0
+        },
+        "Persian": {
+            "precision": 0.9295774647887324,
+            "recall": 0.99,
+            "f1-score": 0.9588377723970944,
+            "support": 200.0
+        },
+        "Portugese": {
+            "precision": 0.9845360824742269,
+            "recall": 0.955,
+            "f1-score": 0.9695431472081218,
+            "support": 200.0
+        },
+        "Pushto": {
+            "precision": 0.9947916666666666,
+            "recall": 0.955,
+            "f1-score": 0.9744897959183674,
+            "support": 200.0
+        },
+        "Romanian": {
+            "precision": 1.0,
+            "recall": 0.975,
+            "f1-score": 0.9873417721518988,
+            "support": 200.0
+        },
+        "Russian": {
+            "precision": 0.9949748743718593,
+            "recall": 0.99,
+            "f1-score": 0.9924812030075187,
+            "support": 200.0
+        },
+        "Spanish": {
+            "precision": 1.0,
+            "recall": 0.98,
+            "f1-score": 0.98989898989899,
+            "support": 200.0
+        },
+        "Swedish": {
+            "precision": 1.0,
+            "recall": 0.995,
+            "f1-score": 0.9974937343358395,
+            "support": 200.0
+        },
+        "Tamil": {
+            "precision": 1.0,
+            "recall": 0.99,
+            "f1-score": 0.9949748743718593,
+            "support": 200.0
+        },
+        "Thai": {
+            "precision": 1.0,
+            "recall": 0.995,
+            "f1-score": 0.9974937343358395,
+            "support": 200.0
+        },
+        "Turkish": {
+            "precision": 1.0,
+            "recall": 0.99,
+            "f1-score": 0.9949748743718593,
+            "support": 200.0
+        },
+        "Urdu": {
+            "precision": 1.0,
+            "recall": 0.88,
+            "f1-score": 0.9361702127659575,
+            "support": 200.0
+        },
+        "accuracy": 0.9731818181818181,
+        "macro avg": {
+            "precision": 0.9761523875350531,
+            "recall": 0.973181818181818,
+            "f1-score": 0.9736710960461614,
+            "support": 4400.0
+        },
+        "weighted avg": {
+            "precision": 0.9761523875350531,
+            "recall": 0.9731818181818181,
+            "f1-score": 0.9736710960461613,
+            "support": 4400.0
+        }
+    },
+    "config": {
+        "model_name": "/home/v_rahimzadeh/hf_models/models--xlm-roberta-base/snapshots/e73636d4f797dec63c3081bb6ed5c7b0bb3f2089",
+        "fine_tune_layers": 3,
+        "lr": 2e-05,
+        "weight_decay": 0.01,
+        "n_epochs": 1,
+        "patience": 3,
+        "min_delta": 0.0001,
+        "warmup_ratio": 0.1,
+        "batch_size": 16
+    },
+    "execution_time": 123.55991291999817,
+    "model_size": 278060566
+}
