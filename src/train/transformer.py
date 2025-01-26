@@ -1,22 +1,37 @@
-
 import sys
 import os
+import yaml  # Import the yaml library
 
 # Add the project root directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-
 
 from src.utils import DataLoader, ResultsHandler, get_path
 from src.models.transformer import TransformerTrainer, TransformerDataset, TransformerClassifier
 from torch.utils.data import DataLoader as TorchDataLoader
 import torch
 from sklearn.metrics import classification_report
-import os
 import time
 from transformers import XLMRobertaTokenizer
+from typing import Dict, Any
+
+def load_configs() -> Dict[str, Any]:
+    """
+    Load configurations from configs.yaml
+    Returns:
+        Dict[str, Any]: Configurations for the transformer model
+    """
+    config_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "configs.yaml")
+    with open(config_path, 'r') as file:
+        configs = yaml.safe_load(file)
+    return configs.get("transformer", {})  # Extract the 'transformer' section
+
 def run_transformer():
     print("Starting transformer model testing...")
     start_time = time.time()
+
+    # Load configurations
+    transformer_config = load_configs()
+    print("Loaded transformer configurations:", transformer_config)
 
     # Initialize components
     data_loader = DataLoader()
@@ -34,8 +49,10 @@ def run_transformer():
     
     # Initialize tokenizer
     print("Initializing tokenizer...")
-    model_name = "xlm-roberta-base"
-    model_name = '/home/v_rahimzadeh/hf_models/models--xlm-roberta-base/snapshots/e73636d4f797dec63c3081bb6ed5c7b0bb3f2089'
+    model_name = transformer_config.get("model_name", "xlm-roberta-base")
+    
+    if transformer_config.get("local_model", False):
+        model_name = '/home/v_rahimzadeh/hf_models/models--xlm-roberta-base/snapshots/e73636d4f797dec63c3081bb6ed5c7b0bb3f2089'
 
     tokenizer = XLMRobertaTokenizer.from_pretrained(model_name)
     
@@ -57,7 +74,7 @@ def run_transformer():
     num_workers = min(os.cpu_count(), 4) if os.cpu_count() else 0
     train_loader = TorchDataLoader(
         train_dataset,
-        batch_size=256,
+        batch_size=transformer_config.get("train_batch_size", 256),
         shuffle=True,
         num_workers=num_workers,
         pin_memory=torch.cuda.is_available()
@@ -65,26 +82,26 @@ def run_transformer():
     
     test_loader = TorchDataLoader(
         test_dataset,
-        batch_size=16,
+        batch_size=transformer_config.get("test_batch_size", 16),
         num_workers=num_workers,
         pin_memory=torch.cuda.is_available()
     )
     
     # Initialize trainer
-    trainer_path = get_path('results','models','transformer')
+    trainer_path = get_path('results', 'models', 'transformer')
     trainer = TransformerTrainer(trainer_path)
-    
+        
     # Configure training
     config = {
-        'model_name': model_name,
-        'fine_tune_layers': 3,
-        'lr': 2e-5,
-        'weight_decay': 0.01,
-        'n_epochs': 1,
-        'patience': 3,
-        'min_delta': 1e-4,
-        'warmup_ratio': 0.1,
-        'batch_size': 16
+        'model_name': model_name,  # Ensure string
+        'fine_tune_layers': int(transformer_config.get("fine_tune_layers", 3)),  # Ensure integer
+        'lr': float(transformer_config.get("lr", 2e-5)),  # Ensure float
+        'weight_decay': float(transformer_config.get("weight_decay", 0.01)),  # Ensure float
+        'n_epochs': int(transformer_config.get("n_epochs", 1)),  # Ensure integer
+        'patience': int(transformer_config.get("patience", 3)),  # Ensure integer
+        'min_delta': float(transformer_config.get("min_delta", 1e-4)),  # Ensure float
+        'warmup_ratio': float(transformer_config.get("warmup_ratio", 0.1)),  # Ensure float
+        'batch_size': int(transformer_config.get("batch_size", 16))  # Ensure integer
     }
     
     # Train model
@@ -138,7 +155,6 @@ def run_transformer():
     
     return True
 
-
 if __name__ == "__main__":
-        success = run_transformer()
-        print("\nTest completed successfully!" if success else "\nTest failed!")
+    success = run_transformer()
+    print("\nTest completed successfully!" if success else "\nTest failed!")

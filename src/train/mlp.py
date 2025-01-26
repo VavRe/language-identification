@@ -1,6 +1,6 @@
-# test_mlp.py
 import sys
 import os
+import yaml  # Import the yaml library
 
 # Add the project root directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
@@ -12,10 +12,26 @@ import torch
 from sklearn.metrics import classification_report
 import numpy as np
 import time
+from typing import Dict, Any
+
+def load_configs() -> Dict[str, Any]:
+    """
+    Load configurations from configs.yaml
+    Returns:
+        Dict[str, Any]: Configurations for the MLP model
+    """
+    config_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "configs.yaml")
+    with open(config_path, 'r') as file:
+        configs = yaml.safe_load(file)
+    return configs.get("mlp", {})  # Extract the 'mlp' section
 
 def run_mlp():
     print("Starting MLP model testing...")
     start_time = time.time()
+
+    # Load configurations
+    mlp_config = load_configs()
+    print("Loaded MLP configurations:", mlp_config)
 
     # Initialize components
     data_loader = DataLoader()
@@ -41,14 +57,14 @@ def run_mlp():
     num_workers = min(os.cpu_count(), 4)  # Use up to 4 workers
     train_loader = TorchDataLoader(
         train_dataset, 
-        batch_size=64, 
+        batch_size=mlp_config.get("batch_size", 64), 
         shuffle=True,
         num_workers=num_workers,
         pin_memory=torch.cuda.is_available()  # Speed up data transfer to GPU
     )
     test_loader = TorchDataLoader(
         test_dataset, 
-        batch_size=64,
+        batch_size=mlp_config.get("batch_size", 64),
         num_workers=num_workers,
         pin_memory=torch.cuda.is_available()
     )
@@ -57,18 +73,6 @@ def run_mlp():
     mlp_trainer = MLPTrainer(model_dir="results/models/mlp")
 
     # MLP Configuration and Training
-    mlp_config = {
-        'embedding_dim': 300,
-        'hidden_dims': [512, 256, 128],
-        'dropout': 0.3,
-        'lr': 0.001,
-        'n_epochs': 20,
-        'patience': 10,
-        'min_delta': 1e-4,
-        'batch_size': 64,
-        'model_name': 'mlp_language_detector'
-    }
-
     print("\nTraining MLP model...")
     mlp_results = mlp_trainer.train(
         train_loader=train_loader,

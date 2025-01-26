@@ -267,7 +267,7 @@ class EarlyStopping:
             mode (str): 'min' for loss, 'max' for metrics like accuracy
         """
         self.patience = patience
-        self.min_delta = min_delta
+        self.min_delta = float(min_delta)  # Ensure min_delta is a float
         self.mode = mode
         self.counter = 0
         self.best_value = float('inf') if mode == 'min' else float('-inf')

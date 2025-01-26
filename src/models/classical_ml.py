@@ -1,12 +1,8 @@
 import sys
 import os
-
-# Add the project root directory to the Python path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-
-import numpy as np
+import yaml  # Import the yaml library
 from typing import Dict, List, Any, Tuple
+import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.svm import LinearSVC
@@ -16,11 +12,10 @@ from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score
 from tqdm import tqdm
 import joblib
-import os
 from src.utils import get_path
 
 class ClassicalMLModels:
-    def __init__(self, models_dir: str = get_path("results","models","classical_ml")):
+    def __init__(self, models_dir: str = get_path("results", "models", "classical_ml")):
         """
         Initialize ClassicalMLModels
         Args:
@@ -29,27 +24,41 @@ class ClassicalMLModels:
         self.models: Dict[str, Pipeline] = {}
         self.models_dir = models_dir
         os.makedirs(models_dir, exist_ok=True)
+        
+        # Load configurations from configs.yaml
+        self.configs = self._load_configs()
         self._initialize_models()
 
+    def _load_configs(self) -> Dict[str, Any]:
+        """
+        Load configurations from configs.yaml
+        Returns:
+            Dict[str, Any]: Configurations for classical_ml
+        """
+        config_path = get_path("configs.yaml")
+        with open(config_path, 'r') as file:
+            configs = yaml.safe_load(file)
+        return configs.get("classical_ml", {})  # Extract the 'classical_ml' section
+
     def _initialize_models(self):
-        """Initialize all classical ML models with their respective pipelines"""
+        """Initialize all classical ML models with their respective pipelines using configurations from configs.yaml"""
         # Vectorizer configurations
         unigram_vec = CountVectorizer(
-            ngram_range=(1, 1),
-            max_features=50000,
-            analyzer='char'
+            ngram_range=tuple(self.configs.get("unigram_ngram_range", (1, 1))),
+            max_features=self.configs.get("unigram_max_features", 50000),
+            analyzer=self.configs.get("unigram_analyzer", "char")
         )
         
         bigram_vec = CountVectorizer(
-            ngram_range=(2, 2),
-            max_features=50000,
-            analyzer='char'
+            ngram_range=tuple(self.configs.get("bigram_ngram_range", (2, 2))),
+            max_features=self.configs.get("bigram_max_features", 50000),
+            analyzer=self.configs.get("bigram_analyzer", "char")
         )
         
         tfidf_vec = TfidfVectorizer(
-            ngram_range=(1, 3),
-            max_features=50000,
-            analyzer='char'
+            ngram_range=tuple(self.configs.get("tfidf_ngram_range", (1, 3))),
+            max_features=self.configs.get("tfidf_max_features", 50000),
+            analyzer=self.configs.get("tfidf_analyzer", "char")
         )
 
         # Model configurations
@@ -68,19 +77,31 @@ class ClassicalMLModels:
             ]),
             'svm_unigram': Pipeline([
                 ('vectorizer', unigram_vec),
-                ('classifier', LinearSVC(random_state=42, max_iter=1000))
+                ('classifier', LinearSVC(
+                    random_state=self.configs.get("random_state", 42),
+                    max_iter=self.configs.get("svm_max_iter", 1000)
+                ))
             ]),
             'svm_tfidf': Pipeline([
                 ('vectorizer', tfidf_vec),
-                ('classifier', LinearSVC(random_state=42, max_iter=1000))
+                ('classifier', LinearSVC(
+                    random_state=self.configs.get("random_state", 42),
+                    max_iter=self.configs.get("svm_max_iter", 1000)
+                ))
             ]),
             'rf_tfidf': Pipeline([
                 ('vectorizer', tfidf_vec),
-                ('classifier', RandomForestClassifier(n_estimators=100, random_state=42))
+                ('classifier', RandomForestClassifier(
+                    n_estimators=self.configs.get("rf_n_estimators", 100),
+                    random_state=self.configs.get("random_state", 42)
+                ))
             ]),
             'lr_tfidf': Pipeline([
                 ('vectorizer', tfidf_vec),
-                ('classifier', LogisticRegression(random_state=42, max_iter=1000))
+                ('classifier', LogisticRegression(
+                    random_state=self.configs.get("random_state", 42),
+                    max_iter=self.configs.get("lr_max_iter", 1000)
+                ))
             ])
         }
 

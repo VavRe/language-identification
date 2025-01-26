@@ -1,105 +1,131 @@
 {
     "lstm": {
         "train_losses": [
-            0.9467510468309576
+            0.9003415523875843,
+            0.2636173494837501,
+            0.173595261241902,
+            0.1321479947932742,
+            0.1056198312714696,
+            0.07971518920226531,
+            0.07098289961503311,
+            0.05553108515387232,
+            0.04001187310554087,
+            0.033729080724614585,
+            0.023019171680154448,
+            0.012082766470160674,
+            0.01017422958959783,
+            0.014382950819245625
         ],
         "val_losses": [
-            0.4076767639405485
+            0.3205356107673783,
+            0.18934895867562812,
+            0.17274735733002855,
+            0.1431136691969806,
+            0.15371989554631105,
+            0.14999223253487245,
+            0.15246851226665836,
+            0.14631245280211064,
+            0.12925569318990776,
+            0.14551572489511708,
+            0.13807593038865784,
+            0.1436321134383763,
+            0.18852862685520633,
+            0.1585555961988259
         ],
-        "final_train_loss": 0.9467510468309576,
-        "best_val_loss": 0.4076767639405485,
+        "final_train_loss": 0.014382950819245625,
+        "best_val_loss": 0.12925569318990776,
         "model_path": "/home/v_rahimzadeh/language-identification/results/models/lstm/lstm_language_detector_best.pt",
-        "early_stopped": false,
-        "epochs_trained": 1,
+        "early_stopped": true,
+        "epochs_trained": 14,
         "classification_report": {
             "Arabic": {
-                "precision": 0.985,
-                "recall": 0.985,
-                "f1-score": 0.985,
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
                 "support": 200.0
             },
             "Chinese": {
-                "precision": 0.9425837320574163,
-                "recall": 0.985,
-                "f1-score": 0.9633251833740831,
+                "precision": 0.99,
+                "recall": 0.99,
+                "f1-score": 0.99,
                 "support": 200.0
             },
             "Dutch": {
-                "precision": 0.8238993710691824,
-                "recall": 0.655,
-                "f1-score": 0.7298050139275766,
+                "precision": 0.98,
+                "recall": 0.98,
+                "f1-score": 0.98,
                 "support": 200.0
             },
             "English": {
-                "precision": 0.575,
-                "recall": 0.92,
-                "f1-score": 0.7076923076923077,
+                "precision": 0.8384279475982532,
+                "recall": 0.96,
+                "f1-score": 0.8951048951048951,
                 "support": 200.0
             },
             "Estonian": {
-                "precision": 0.7652173913043478,
-                "recall": 0.88,
-                "f1-score": 0.8186046511627907,
+                "precision": 0.9509803921568627,
+                "recall": 0.97,
+                "f1-score": 0.9603960396039604,
                 "support": 200.0
             },
             "French": {
-                "precision": 0.8673469387755102,
-                "recall": 0.85,
-                "f1-score": 0.8585858585858586,
+                "precision": 0.9653465346534653,
+                "recall": 0.975,
+                "f1-score": 0.9701492537313433,
                 "support": 200.0
             },
             "Hindi": {
-                "precision": 0.98989898989899,
+                "precision": 1.0,
                 "recall": 0.98,
-                "f1-score": 0.9849246231155779,
+                "f1-score": 0.98989898989899,
                 "support": 200.0
             },
             "Indonesian": {
-                "precision": 1.0,
-                "recall": 0.56,
-                "f1-score": 0.717948717948718,
+                "precision": 0.9591836734693877,
+                "recall": 0.94,
+                "f1-score": 0.9494949494949495,
                 "support": 200.0
             },
             "Japanese": {
-                "precision": 0.985,
+                "precision": 0.9899497487437185,
                 "recall": 0.985,
-                "f1-score": 0.985,
+                "f1-score": 0.9874686716791979,
                 "support": 200.0
             },
             "Korean": {
                 "precision": 1.0,
-                "recall": 0.935,
-                "f1-score": 0.9664082687338501,
+                "recall": 0.99,
+                "f1-score": 0.9949748743718593,
                 "support": 200.0
             },
             "Latin": {
-                "precision": 0.6423076923076924,
-                "recall": 0.835,
-                "f1-score": 0.7260869565217392,
+                "precision": 0.9095477386934674,
+                "recall": 0.905,
+                "f1-score": 0.9072681704260651,
                 "support": 200.0
             },
             "Persian": {
-                "precision": 0.9701492537313433,
-                "recall": 0.975,
-                "f1-score": 0.972568578553616,
+                "precision": 0.9949494949494949,
+                "recall": 0.985,
+                "f1-score": 0.9899497487437185,
                 "support": 200.0
             },
             "Portugese": {
-                "precision": 0.7921348314606742,
-                "recall": 0.705,
-                "f1-score": 0.746031746031746,
+                "precision": 0.9595959595959596,
+                "recall": 0.95,
+                "f1-score": 0.9547738693467337,
                 "support": 200.0
             },
             "Pushto": {
-                "precision": 0.9945945945945946,
-                "recall": 0.92,
-                "f1-score": 0.9558441558441558,
+                "precision": 0.9844559585492227,
+                "recall": 0.95,
+                "f1-score": 0.9669211195928753,
                 "support": 200.0
             },
             "Romanian": {
-                "precision": 0.983739837398374,
-                "recall": 0.605,
-                "f1-score": 0.7492260061919505,
+                "precision": 0.9947643979057592,
+                "recall": 0.95,
+                "f1-score": 0.9718670076726342,
                 "support": 200.0
             },
             "Russian": {
@@ -109,15 +135,15 @@
                 "support": 200.0
             },
             "Spanish": {
-                "precision": 0.695852534562212,
-                "recall": 0.755,
-                "f1-score": 0.7242206235011991,
+                "precision": 0.9468599033816425,
+                "recall": 0.98,
+                "f1-score": 0.9631449631449631,
                 "support": 200.0
             },
             "Swedish": {
-                "precision": 0.9346733668341709,
-                "recall": 0.93,
-                "f1-score": 0.9323308270676691,
+                "precision": 0.9897959183673469,
+                "recall": 0.97,
+                "f1-score": 0.9797979797979798,
                 "support": 200.0
             },
             "Tamil": {
@@ -127,34 +153,34 @@
                 "support": 200.0
             },
             "Thai": {
-                "precision": 0.995,
+                "precision": 1.0,
                 "recall": 0.995,
-                "f1-score": 0.995,
+                "f1-score": 0.9974937343358395,
                 "support": 200.0
             },
             "Turkish": {
-                "precision": 0.8391304347826087,
-                "recall": 0.965,
-                "f1-score": 0.8976744186046511,
+                "precision": 0.985,
+                "recall": 0.985,
+                "f1-score": 0.985,
                 "support": 200.0
             },
             "Urdu": {
-                "precision": 0.9848484848484849,
-                "recall": 0.975,
-                "f1-score": 0.9798994974874372,
+                "precision": 1.0,
+                "recall": 0.985,
+                "f1-score": 0.9924433249370277,
                 "support": 200.0
             },
-            "accuracy": 0.8806818181818182,
+            "accuracy": 0.9729545454545454,
             "macro avg": {
-                "precision": 0.8980171569829818,
-                "recall": 0.8806818181818183,
-                "f1-score": 0.8809614685780359,
+                "precision": 0.9740389849120263,
+                "recall": 0.9729545454545453,
+                "f1-score": 0.9732328393752223,
                 "support": 4400.0
             },
             "weighted avg": {
-                "precision": 0.8980171569829818,
-                "recall": 0.8806818181818182,
-                "f1-score": 0.8809614685780359,
+                "precision": 0.9740389849120266,
+                "recall": 0.9729545454545454,
+                "f1-score": 0.9732328393752223,
                 "support": 4400.0
             }
         },
@@ -165,13 +191,13 @@
             "bidirectional": true,
             "dropout": 0.3,
             "lr": 0.001,
-            "n_epochs": 1,
-            "patience": 10,
-            "min_delta": 0.0001,
+            "n_epochs": 20,
+            "patience": 5,
+            "min_delta": "1e-4",
             "batch_size": 64,
             "model_name": "lstm_language_detector"
         },
-        "execution_time": 9.835421323776245,
+        "execution_time": 91.8770809173584,
         "num_parameters": 4774930
     },
     "dataset_info": {
