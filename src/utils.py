@@ -142,6 +142,8 @@ class ResultsHandler:
             "mlp",
             "transformer",
             "zero_shot",
+            "statistical",
+            "literature"
         ]
         for dir_name in directories:
             os.makedirs(os.path.join(self.base_path, dir_name), exist_ok=True)

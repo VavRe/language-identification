@@ -1,0 +1,182 @@
+{
+    "training_stats": {
+        "n_samples": 17599,
+        "n_languages": 22
+    },
+    "classification_report": {
+        "Arabic": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 200.0
+        },
+        "Chinese": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 200.0
+        },
+        "Dutch": {
+            "precision": 0.5705882352941176,
+            "recall": 0.97,
+            "f1-score": 0.7185185185185186,
+            "support": 200.0
+        },
+        "English": {
+            "precision": 0.6048632218844985,
+            "recall": 0.995,
+            "f1-score": 0.7523629489603024,
+            "support": 200.0
+        },
+        "Estonian": {
+            "precision": 0.6309963099630996,
+            "recall": 0.855,
+            "f1-score": 0.7261146496815286,
+            "support": 200.0
+        },
+        "French": {
+            "precision": 0.24478442280945759,
+            "recall": 0.88,
+            "f1-score": 0.383025027203482,
+            "support": 200.0
+        },
+        "Hindi": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 200.0
+        },
+        "Indonesian": {
+            "precision": 0.5094850948509485,
+            "recall": 0.94,
+            "f1-score": 0.6608084358523726,
+            "support": 200.0
+        },
+        "Japanese": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 200.0
+        },
+        "Korean": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 200.0
+        },
+        "Latin": {
+            "precision": 0.5264705882352941,
+            "recall": 0.895,
+            "f1-score": 0.662962962962963,
+            "support": 200.0
+        },
+        "Persian": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 200.0
+        },
+        "Portugese": {
+            "precision": 0.728,
+            "recall": 0.91,
+            "f1-score": 0.8088888888888889,
+            "support": 200.0
+        },
+        "Pushto": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 200.0
+        },
+        "Romanian": {
+            "precision": 0.75,
+            "recall": 0.345,
+            "f1-score": 0.4726027397260274,
+            "support": 200.0
+        },
+        "Russian": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 200.0
+        },
+        "Spanish": {
+            "precision": 0.7966101694915254,
+            "recall": 0.94,
+            "f1-score": 0.8623853211009175,
+            "support": 200.0
+        },
+        "Swedish": {
+            "precision": 0.5767634854771784,
+            "recall": 0.695,
+            "f1-score": 0.6303854875283447,
+            "support": 200.0
+        },
+        "Tamil": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 200.0
+        },
+        "Thai": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 200.0
+        },
+        "Turkish": {
+            "precision": 0.14285714285714285,
+            "recall": 0.01,
+            "f1-score": 0.018691588785046728,
+            "support": 200.0
+        },
+        "Urdu": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 200.0
+        },
+        "accuracy": 0.3834090909090909,
+        "macro avg": {
+            "precision": 0.2764281214028756,
+            "recall": 0.38340909090909087,
+            "f1-score": 0.3043975713276542,
+            "support": 4400.0
+        },
+        "weighted avg": {
+            "precision": 0.27642812140287554,
+            "recall": 0.3834090909090909,
+            "f1-score": 0.30439757132765416,
+            "support": 4400.0
+        }
+    },
+    "execution_time": 69.70701789855957,
+    "prediction_stats": {
+        "total_samples": 4400,
+        "unique_predictions": 22,
+        "prediction_distribution": {
+            "Pushto": 303,
+            "Russian": 88,
+            "Arabic": 27,
+            "Swedish": 241,
+            "French": 719,
+            "English": 329,
+            "Korean": 4,
+            "Japanese": 52,
+            "Portugese": 250,
+            "Dutch": 340,
+            "Spanish": 236,
+            "Thai": 115,
+            "Estonian": 271,
+            "Turkish": 14,
+            "Persian": 113,
+            "Tamil": 23,
+            "Hindi": 9,
+            "Chinese": 345,
+            "Latin": 340,
+            "Indonesian": 369,
+            "Romanian": 92,
+            "Urdu": 120
+        }
+    }
+}

@@ -50,3 +50,8 @@ transformer:
   train_batch_size: 256
   test_batch_size: 16
   local_model: True
+
+
+literature:
+  max_profile_size: 400  # for Cavnar-Trenkle
+  smoothing: 0.5        # for Dunning
