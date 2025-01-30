@@ -5,7 +5,7 @@ from typing import List, Dict, Any
 from .base_model import BaseModel
 
 class NgramModel(BaseModel):
-    def __init__(self, n: int = 3, smoothing: float = 1e-10):
+    def __init__(self, n: int = 1, smoothing: float = 1e-8):
         super().__init__(model_name=f"ngram_{n}", category="statistical")
         self.n = n
         self.smoothing = smoothing

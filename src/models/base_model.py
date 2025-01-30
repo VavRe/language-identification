@@ -1,8 +1,15 @@
-# src/models/base_model.py
+import sys
+import os
+
+# Add the project root directory to the Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
+
+
 from abc import ABC, abstractmethod
 import pickle
 import os
-from ..utils import get_path
+from src.utils import get_path
 
 class BaseModel(ABC):
     def __init__(self, model_name: str, category:str):

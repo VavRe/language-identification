@@ -30,7 +30,7 @@ def run_statistical_models():
 
     # Define models
     models = [
-        NgramModel(n=3),
+        NgramModel(n=1),
         CharacterFrequency(),
         MarkovChain()
     ]

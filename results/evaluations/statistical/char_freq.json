@@ -150,33 +150,33 @@
             "support": 4400.0
         }
     },
-    "execution_time": 39.59405541419983,
+    "execution_time": 43.834869384765625,
     "prediction_stats": {
         "total_samples": 4400,
         "unique_predictions": 22,
         "prediction_distribution": {
+            "Hindi": 195,
+            "Persian": 206,
+            "Indonesian": 201,
+            "Urdu": 176,
             "Pushto": 182,
-            "Russian": 199,
-            "Arabic": 221,
-            "Swedish": 176,
+            "Chinese": 187,
             "French": 198,
             "English": 254,
-            "Korean": 197,
-            "Japanese": 194,
-            "Portugese": 208,
-            "Dutch": 205,
             "Spanish": 220,
-            "Thai": 198,
-            "Estonian": 187,
-            "Turkish": 193,
-            "Persian": 206,
             "Tamil": 197,
-            "Hindi": 195,
-            "Chinese": 187,
-            "Latin": 210,
-            "Indonesian": 201,
+            "Estonian": 187,
+            "Dutch": 205,
+            "Russian": 199,
+            "Turkish": 193,
             "Romanian": 196,
-            "Urdu": 176
+            "Latin": 210,
+            "Korean": 197,
+            "Portugese": 208,
+            "Thai": 198,
+            "Swedish": 176,
+            "Arabic": 221,
+            "Japanese": 194
         }
     }
 }

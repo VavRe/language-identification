@@ -10,3 +10,9 @@ requests
 kagglehub
 tensorboard
 sentencepiece
+langchain 
+pyyaml
+openai 
+python-dotenv 
+tqdm 
+langchain-community
